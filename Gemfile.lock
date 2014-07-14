@@ -38,6 +38,6 @@ PLATFORMS
 DEPENDENCIES
   activesupport
   faker
-  money
+  money (~> 6.1.1)
   rake
   rspec (~> 3.0.0)
