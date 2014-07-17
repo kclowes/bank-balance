@@ -1,4 +1,6 @@
 require 'csv'
+require './lib/checking_entry'
+
 
 class CheckingAccount
 
