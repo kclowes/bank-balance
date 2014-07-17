@@ -14,10 +14,11 @@ class CreditCardAccount
     files.each do |file|
       csv_lines = CSV.read(file, headers: true)
       csv_lines.each do |line|
-        price = line[2].gsub('$', '-').to_f
-        credit_entry_array << CreditCardEntry.new(line[0], line[1], price)
+        if line[1] != "Payment Thank You"
+          price = line[2].gsub('$', '-').to_f
+          credit_entry_array << CreditCardEntry.new(line[0], line[1], price)
+        end
       end
-
     end
     credit_entry_array
   end

@@ -6,10 +6,20 @@ describe CreditCardAccount do
     account = CreditCardAccount.new('spec/fixtures')
 
     expected = [
-      CreditCardEntry.new('2014-04-01', "Sleek Cotton Shirt", 94.79),
-      CreditCardEntry.new('2014-04-01', "Gorgeous Cotton Chair", 8.82),
+      CreditCardEntry.new('2014-04-01', "Sleek Cotton Shirt", -94.79),
+      CreditCardEntry.new('2014-04-01', "Gorgeous Cotton Chair", -8.82),
     ]
 
     expect(account.entries_for('april', 2014)).to match_array(expected)
+  end
+
+  it 'will ignore credit card payments' do
+    account = CreditCardAccount.new('spec/fixtures')
+
+    expected = [
+      CreditCardEntry.new('2014-02-28','Practical Rubber Car',-50.04),
+    ]
+
+    expect(account.entries_for('february', 2014)).to match_array(expected)
   end
 end
