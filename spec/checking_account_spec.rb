@@ -1,5 +1,5 @@
-require './lib/checking_account'
-require './lib/checking_entry'
+require_relative '../lib/checking_account'
+require_relative '../lib/checking_entry'
 
 describe CheckingAccount do
   it 'can get a list of CheckingEntries for a month' do

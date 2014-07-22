@@ -1,5 +1,5 @@
 require 'csv'
-require './lib/checking_entry'
+require_relative '../lib/checking_entry'
 
 
 class CheckingAccount
@@ -15,13 +15,14 @@ class CheckingAccount
     files.each do |file|
       csv_lines = CSV.read(file, headers: true)
       csv_lines.each do |line|
-
-        amount = if line[2].nil?
-                   line[3].gsub('$', '-').to_f
-                 else
-                   line[2].gsub('$', '').gsub(',', '').to_f
-                 end
-        checking_entry_array << CheckingEntry.new(line[0], line[1], amount)
+        if line[1] != "Payment CC"
+          amount = if line[2].nil?
+                     line[3].gsub('$', '-').to_f
+                   else
+                     line[2].gsub('$', '').gsub(',', '').to_f
+                   end
+          checking_entry_array << CheckingEntry.new(line[0], line[1], amount)
+        end
       end
     end
     checking_entry_array

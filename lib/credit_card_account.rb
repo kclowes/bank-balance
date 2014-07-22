@@ -1,5 +1,5 @@
 require 'csv'
-require './lib/credit_card_entry'
+require_relative '../lib/credit_card_entry'
 
 class CreditCardAccount
 

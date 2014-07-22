@@ -1,5 +1,5 @@
-require './lib/checking_account'
-require './lib/credit_card_account'
+require_relative '../lib/checking_account'
+require_relative '../lib/credit_card_account'
 
 class MonthlyBalance
 
@@ -14,3 +14,4 @@ class MonthlyBalance
   end
 
 end
+
